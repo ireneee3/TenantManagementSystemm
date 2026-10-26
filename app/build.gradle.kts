@@ -1,13 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
-    // NEW: switch Safe Args on (no version number here, must be BELOW the line above)
+    // Safe Args (no version number here; the version goes in the root build.gradle.kts)
     id("androidx.navigation.safeargs.kotlin")
+    
 }
 
 android {
     namespace = "com.example.tenantmanagementsystem"
     compileSdk {
         version = release(37)
+        buildFeatures {
+            viewBinding = true
+        }
     }
 
     defaultConfig {
@@ -39,7 +43,7 @@ android {
 }
 
 dependencies {
-    // NEW: Navigation Component
+    // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.9.8")
     implementation("androidx.navigation:navigation-ui-ktx:2.9.8")
 
@@ -47,7 +51,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.material)
+    implementation(libs.material)   // gives you MaterialToolbar, NavigationView and DrawerLayout
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
